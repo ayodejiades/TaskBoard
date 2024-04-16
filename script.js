@@ -4,11 +4,10 @@ const modal = document.getElementById("taskModal");
 const addStuff = document.getElementById("addContent");
 const addButton = document.getElementById("addTaskBtn");
 const closeBtn = modal.querySelector(".close");
-const mainPage = document.querySelector
+const mainPage = document.querySelector("main");
 
 closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-  
+  modal.style.display = "none"; 
 });
 
 
