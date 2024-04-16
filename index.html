@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap"
+    />
+    <title>TaskBoard</title>
+  </head>
+  <body class="theme">
+    <main>
+      <nav></nav>
+      <header class="header">
+        <h1>TaskBoard</h1>
+        <button
+          class="action"
+          title="Add Task"
+        >
+          <svg width="24" height="24">
+            <use href="./assets/icons/Plus.svg#icon" onclick="toggleFormVisibility()"></use>
+          </svg>
+        </button>
+
+        <button class="action" title="Funnel" onclick="">
+          <svg width="24" height="24">
+            <use href="./assets/icons/Funnel.svg#icon"></use>
+          </svg>
+        </button>
+
+        <button class="action" title="Tag" onclick="">
+          <svg width="24" height="24">
+            <use href="./assets/icons/Tag.svg#icon"></use>
+          </svg>
+        </button>
+      </header>
+
+      <div class="lanes">
+        <article class="lane" id="activeLane">
+          <header class="lane__header">
+            <em> 10</em>
+            <h2>Active</h2>
+            <button class="action" title="Task Sort" type="button">
+              <svg width="16" height="16">
+                <use href="./assets/icons/SortDescending.svg#icon"></use>
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="activeLane"
+          >
+            <li
+              class="task"
+              id="task1"
+            >
+              <header>
+                <h3>UTME Prep</h3>
+              </header>
+              <div class="task__body">
+                <small>Take 4 practice tests on TestDriller app</small>
+              </div>
+              <div class="task__indicators">
+                <time class="deadline hi--positive" datetime="2024-03-16">
+                  2024-03-16
+                </time>
+                <data class="priority hi--negative" value="3">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  High
+                </data>
+              </div>
+              <dl class="task__meta-data">
+                <dt>
+                  <svg width="16" height="16">
+                    <use href="./assets/icons/Clock.svg#icon" />
+                  </svg>
+                </dt>
+                <dd>8 <small>h estimated</small></dd>
+              </dl>
+              <ul class="tag-list">
+                <li>Exam Prep</li>
+                <li>Grind</li>
+              </ul>
+              <div class="task__actions">
+                <button
+                  class="action"
+                  title="Edit"
+                  onclick="handleEditTask('task1')"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Edit">
+                      <g id="Edit">
+                        <path
+                          id="Stroke 1"
+                          d="M3 17.2503V21.0003H6.75L20.8101 6.94025L17.0601 3.19025L3 17.2503Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M20.71 3.29001C21.1 2.90001 21.1 2.27001 20.71 1.88001C20.33 1.50001 19.7 1.50001 19.31 1.88001L16.13 5.06001L19.88 8.81001L20.71 3.29001Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button class="action" title="Move" onclick="moveTask('task1')">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Move">
+                      <g id="Move">
+                        <path
+                          id="Stroke 1"
+                          d="M12 21V3"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M3 12H21"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M7.5 7.5L12 3L16.5 7.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 4"
+                          d="M7.5 16.5L12 21L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M16.5 7.5L21 12L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 6"
+                          d="M7.5 7.5L3 12L7.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button
+                  class="action"
+                  title="Delete"
+                  onclick="deleteTask('task1')"
+                  type="button"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Delete">
+                      <g id="Delete">
+                        <path
+                          id="Stroke 1"
+                          d="M19.325 9.4682C19.325 9.4682 18.782 16.2032 18.467 19.0402C18.317 20.3952 17.48 21.1892 16.109 21.2142C13.5 21.2612 10.888 21.2642 8.28003 21.2092C6.96103 21.1822 6.13803 20.3782 5.99103 19.0472C5.67403 16.1852 5.13403 9.4682 5.13403 9.4682"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M20.7082 6.23969H3.75024"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M17.4406 6.23967C16.6556 6.23967 15.9796 5.68467 15.8256 4.91567L15.5826 3.69967C15.4326 3.13867 14.9246 2.75067 14.3456 2.75067H10.1126C9.53358 2.75067 9.02558 3.13867 8.87558 3.69967L8.63258 4.91567C8.47858 5.68467 7.80258 6.23967 7.01758 6.23967"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              class="task"
+              id="task2"
+            >
+              <header>
+                <h3>Work on Taskboard project</h3>
+              </header>
+              <div class="task__body">
+                <small>Finish before April</small>
+              </div>
+              <div class="task__indicators">
+                <time class="deadline hi--positive" datetime="2024-03-16">
+                  2024-03-16
+                </time>
+                <data class="priority hi--negative" value="3">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  High
+                </data>
+              </div>
+              <dl class="task__meta-data">
+                <dt>
+                  <svg width="16" height="16">
+                    <use href="./assets/icons/Clock.svg#icon" />
+                  </svg>
+                </dt>
+                <dd>12&nbsp;<small>h estimated</small></dd>
+              </dl>
+              <ul class="tag-list">
+                <li>INITS</li>
+                <li>Project</li>
+                <li>Grind</li>
+              </ul>
+              <div class="task__actions">
+                <button
+                  class="action"
+                  title="Edit"
+                  onclick="handleEditTask('task2')"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Edit">
+                      <g id="Edit">
+                        <path
+                          id="Stroke 1"
+                          d="M3 17.2503V21.0003H6.75L20.8101 6.94025L17.0601 3.19025L3 17.2503Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M20.71 3.29001C21.1 2.90001 21.1 2.27001 20.71 1.88001C20.33 1.50001 19.7 1.50001 19.31 1.88001L16.13 5.06001L19.88 8.81001L20.71 3.29001Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button class="action" title="Move" onclick="moveTask('task2')">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Move">
+                      <g id="Move">
+                        <path
+                          id="Stroke 1"
+                          d="M12 21V3"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M3 12H21"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M7.5 7.5L12 3L16.5 7.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 4"
+                          d="M7.5 16.5L12 21L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M16.5 7.5L21 12L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 6"
+                          d="M7.5 7.5L3 12L7.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button
+                  class="action"
+                  title="Delete"
+                  onclick="deleteTask('task2')"
+                  type="button"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Delete">
+                      <g id="Delete">
+                        <path
+                          id="Stroke 1"
+                          d="M19.325 9.4682C19.325 9.4682 18.782 16.2032 18.467 19.0402C18.317 20.3952 17.48 21.1892 16.109 21.2142C13.5 21.2612 10.888 21.2642 8.28003 21.2092C6.96103 21.1822 6.13803 20.3782 5.99103 19.0472C5.67403 16.1852 5.13403 9.4682 5.13403 9.4682"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M20.7082 6.23969H3.75024"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M17.4406 6.23967C16.6556 6.23967 15.9796 5.68467 15.8256 4.91567L15.5826 3.69967C15.4326 3.13867 14.9246 2.75067 14.3456 2.75067H10.1126C9.53358 2.75067 9.02558 3.13867 8.87558 3.69967L8.63258 4.91567C8.47858 5.68467 7.80258 6.23967 7.01758 6.23967"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              class="task"
+              id="task3"
+            >
+              <header>
+                <h3>Read Eloquent Javascript</h3>
+              </header>
+              <div class="task__body">
+                <small>Complete Chapter 7</small>
+              </div>
+              <div class="task__indicators">
+                <time class="deadline hi--positive" datetime="2024-03-16">
+                  2024-03-16
+                </time>
+                <data class="priority hi--attention" value="2">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Medium
+                </data>
+              </div>
+              <dl class="task__meta-data">
+                <dt>
+                  <svg width="16" height="16">
+                    <use href="./assets/icons/Clock.svg#icon" />
+                  </svg>
+                </dt>
+                <dd>3&nbsp;<small>h estimated</small></dd>
+              </dl>
+              <ul class="tag-list">
+                <li>Reading</li>
+                <li>Study</li>
+                <li>Grind</li>
+              </ul>
+              <div class="task__actions">
+                <button
+                  class="action"
+                  title="Edit"
+                  onclick="handleEditTask('task3')"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Edit">
+                      <g id="Edit">
+                        <path
+                          id="Stroke 1"
+                          d="M3 17.2503V21.0003H6.75L20.8101 6.94025L17.0601 3.19025L3 17.2503Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M20.71 3.29001C21.1 2.90001 21.1 2.27001 20.71 1.88001C20.33 1.50001 19.7 1.50001 19.31 1.88001L16.13 5.06001L19.88 8.81001L20.71 3.29001Z"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button class="action" title="Move" onclick="moveTask('task3')">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Move">
+                      <g id="Move">
+                        <path
+                          id="Stroke 1"
+                          d="M12 21V3"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 2"
+                          d="M3 12H21"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M7.5 7.5L12 3L16.5 7.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 4"
+                          d="M7.5 16.5L12 21L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M16.5 7.5L21 12L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 6"
+                          d="M7.5 7.5L3 12L7.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+                <button
+                  class="action"
+                  title="Delete"
+                  onclick="deleteTask('task3')"
+                  type="button"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Iconly/Light/Delete">
+                      <g id="Delete">
+                        <path
+                          id="Stroke 1"
+                          d="M19.325 9.4682C19.325 9.4682 18.782 16.2032 18.467 19.0402C18.317 20.3952 17.48 21.1892 16.109 21.2142C13.5 21.2612 10.888 21.2642 8.28003 21.2092C6.96103 21.1822 6.13803 20.3782 5.99103 19.0472C5.67403 16.1852 5.13403 9.4682 5.13403 9.4682"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 3"
+                          d="M20.7082 6.23969H3.75024"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Stroke 5"
+                          d="M17.4406 6.23967C16.6556 6.23967 15.9796 5.68467 15.8256 4.91567L15.5826 3.69967C15.4326 3.13867 14.9246 2.75067 14.3456 2.75067H10.1126C9.53358 2.75067 9.02558 3.13867 8.87558 3.69967L8.63258 4.91567C8.47858 5.68467 7.80258 6.23967 7.01758 6.23967"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="lane" id="completedLane">
+          <header class="lane__header">
+            <em>8</em>
+            <h2>Completed</h2>
+            <button title="sort descend" class="action" type="button">
+              <svg width="16" height="16">
+                <use href="./assets/icons/SortDescending.svg#icon"></use>
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="completedLane"
+            ondragover="event.preventDefault();"
+            ondrop="drop(event)"
+          ></ul>
+        </article>
+      </div>
+    </main>
+
+    <div id="taskModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="taskForm">
+         <label for="taskName">Task Name:</label><br />
+        <input type="text" id="taskName" name="taskName" required /><br /><br />
+        <label for="taskDescription">Task Description:</label><br />
+        <textarea
+          id="taskDescription"
+          name="taskDescription"
+          rows="10"
+          cols="55"
+          required
+        ></textarea
+        ><br /><br />
+        <label for="taskDeadline">Deadline:</label><br />
+        <input
+          type="date"
+          id="taskDeadline"
+          name="taskDeadline"
+          required
+        /><br /><br />
+        <label for="taskPriority">Priority:</label><br />
+        <select id="taskPriority" name="taskPriority" required>
+          <br />
+          <option value="Low">1</option>
+          <option value="Medium">2</option>
+          <option value="High">3</option></select
+        ><br /><br />
+        <label for="taskEstimate">Estimated Time (hours):</label><br />
+        <input
+          type="number"
+          id="taskEstimate"
+          name="taskEstimate"
+          min="0"
+          required
+        /><br /><br />
+        <label for="taskTags">Tags:</label><br />
+        <input type="text" id="taskTags" name="taskTags" required /><br /><br />
+        <button type="submit" id="addContent">Add Task</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
