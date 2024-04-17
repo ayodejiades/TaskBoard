@@ -20,19 +20,20 @@
         <button
           class="action"
           title="Add Task"
+          id = "addBtn"
         >
           <svg width="24" height="24">
-            <use href="./assets/icons/Plus.svg#icon" onclick="toggleFormVisibility()"></use>
+            <use href="./assets/icons/Plus.svg#icon"></use>
           </svg>
         </button>
 
-        <button class="action" title="Funnel" onclick="">
+        <button class="action" title="Funnel">
           <svg width="24" height="24">
             <use href="./assets/icons/Funnel.svg#icon"></use>
           </svg>
         </button>
 
-        <button class="action" title="Tag" onclick="">
+        <button class="action" title="Tag">
           <svg width="24" height="24">
             <use href="./assets/icons/Tag.svg#icon"></use>
           </svg>
@@ -595,8 +596,6 @@
           </header>
           <ul
             class="completedLane"
-            ondragover="event.preventDefault();"
-            ondrop="drop(event)"
           ></ul>
         </article>
       </div>
@@ -607,13 +606,14 @@
         <span class="close">&times;</span>
         <form id="taskForm">
          <label for="taskName">Task Name:</label><br />
-        <input type="text" id="taskName" name="taskName" required /><br /><br />
+        <input type="text" id="taskName" placeholder="Enter your title here" name="taskName" required /><br /><br />
         <label for="taskDescription">Task Description:</label><br />
         <textarea
           id="taskDescription"
           name="taskDescription"
           rows="10"
           cols="55"
+          placeholder="Enter your description here"
           required
         ></textarea
         ><br /><br />
@@ -626,7 +626,7 @@
         /><br /><br />
         <label for="taskPriority">Priority:</label><br />
         <select id="taskPriority" name="taskPriority" required>
-          <br />
+          <br/>
           <option value="Low">1</option>
           <option value="Medium">2</option>
           <option value="High">3</option></select
